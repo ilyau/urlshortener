@@ -27,7 +27,7 @@ class Url
     /**
      * @var string
      *
-     * @ORM\Column(name="original_url", type="string", length=255)
+     * @ORM\Column(name="original_url", type="text", length=2000)
      */
     private $originalUrl;
 

@@ -20,7 +20,7 @@ USE `urlshortener`;
 DROP TABLE IF EXISTS `url`;
 CREATE TABLE IF NOT EXISTS `url` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `original_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `original_url` text COLLATE utf8_unicode_ci NOT NULL,
   `user` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `createDatetime` datetime NOT NULL,
   PRIMARY KEY (`id`),
