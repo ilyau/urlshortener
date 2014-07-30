@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use Acme\UrlshortenerBundle\Entity\Url;
 use Symfony\Component\Validator\Constraints\Url as UrlConstraint;
+use Symfony\Component\Validator\Constraints\Length;
 
 class DefaultController extends Controller
 {
@@ -32,8 +33,6 @@ class DefaultController extends Controller
             'history'    => $history,
             'server_url' => $this->container->getParameter('server_url')
         ]);
-
-        return $this->render('AcmeUrlshortenerBundle:Default:index.html.twig');
     }
 
     public function shortUrlAction(Request $request)
@@ -55,6 +54,18 @@ class DefaultController extends Controller
 
         if (count($errorList) !== 0) {
             $this->get('session')->getFlashBag()->add('error', 'URL не валиден');
+            return $redirect;
+        }
+
+        $lenthConstrait = new Length([
+            'min' => 50,
+            'max' => 2000
+        ]);
+
+        $errorList = $this->get('validator')->validateValue($source_url, $lenthConstrait);
+
+        if (count($errorList) !== 0) {
+            $this->get('session')->getFlashBag()->add('error', 'Длина ссылки слишком маленькая или большая');
             return $redirect;
         }
 
