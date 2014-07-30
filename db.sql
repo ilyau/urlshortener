@@ -23,7 +23,8 @@ CREATE TABLE IF NOT EXISTS `url` (
   `original_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `user` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `createDatetime` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `user` (`user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Экспортируемые данные не выделены.

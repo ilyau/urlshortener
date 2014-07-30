@@ -7,7 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Url
  *
- * @ORM\Table()
+ * @ORM\Table(name="url", indexes={
+ *     @ORM\index(name="user", columns={"user"})
+ * })
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */

@@ -3,7 +3,7 @@
 namespace Acme\UrlshortenerBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use \Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class DefaultControllerTest extends WebTestCase
 {
