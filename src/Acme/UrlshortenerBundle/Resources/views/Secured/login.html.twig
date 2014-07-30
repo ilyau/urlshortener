@@ -1,0 +1,33 @@
+{% extends 'AcmeUrlshortenerBundle::base.html.twig' %}
+
+{% block body %}
+    <h1 class="title">Вход</h1>
+
+    <p>
+        Можете авторизоваться под этими пользователями: <em>user/userpass</em> или <em>admin/adminpass</em>
+    </p>
+
+    {% if error %}
+        <div class="error">{{ error.message }}</div>
+    {% endif %}
+
+    <form action="{{ path("security_check") }}" method="post" id="login">
+        <div>
+            <label for="username">Логин</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        </div>
+
+        <div>
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="_password" />
+        </div>
+
+        <button type="submit" class="sf-button">
+            <span class="border-l">
+                <span class="border-r">
+                    <span class="btn-bg">Войти</span>
+                </span>
+            </span>
+        </button>
+    </form>
+{% endblock %}

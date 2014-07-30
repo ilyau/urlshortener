@@ -1,0 +1,11 @@
+acme_urlshortener_homepage:
+    path:     /
+    defaults: { _controller: AcmeUrlshortenerBundle:Default:index }
+
+acme_urlshortener_short_url:
+    path:     /short_url
+    defaults: { _controller: AcmeUrlshortenerBundle:Default:shortUrl }
+
+acme_urlshortener_decode:
+    path:     /{code}
+    defaults: { _controller: AcmeUrlshortenerBundle:Default:decode }

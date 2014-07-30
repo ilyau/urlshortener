@@ -1,0 +1,40 @@
+{% extends 'AcmeUrlshortenerBundle::base.html.twig' %}
+
+{% block body %}
+    <p>
+        Вы зашли как <strong>{{ app.user ? app.user.username : 'Anonymous' }}</strong> - <a href="{{ path('security_logout') }}">выйти</a>
+    </p>
+
+    <h1>Сократить ссылку</h1>
+
+    <form action="{{ path('acme_urlshortener_short_url') }}" method="post" class="urlsh_form">
+        <textarea name="url"></textarea>
+        <button>Сократить</button>
+        {% if app.session.getFlashBag.has('error') %}
+            <span class="error">
+                {{ app.session.getFlashBag.get('error')[0] }}
+            </span>
+        {% endif %}
+    </form>
+
+    {% if history %}
+        <h1>История</h1>
+        <table class="history">
+            <thead>
+                <tr>
+                    <td class="column1">создана</td>
+                    <td class="column2">исходная ссылка</td>
+                    <td class="column3">сокращенная</td>
+                </tr>
+            </thead>
+
+            {% for url in history %}
+                <tr>
+                    <td>{{ url.date }}</td>
+                    <td>{{ url.original_url }}</td>
+                    <td><a href="{{ server_url }}{{ url.short_url }}" target="blank">{{ server_url }}{{ url.short_url }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

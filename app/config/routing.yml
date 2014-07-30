@@ -1,0 +1,15 @@
+security_login:
+    path:     /login
+    defaults: { _controller: AcmeUrlshortenerBundle:Secured:login }
+
+security_check:
+    path:     /login_check
+    defaults: { _controller: AcmeUrlshortenerBundle:Secured:securityCheck }
+
+security_logout:
+    path:     /logout
+    defaults: { _controller: AcmeUrlshortenerBundle:Secured:logout }
+
+acme_urlshortener:
+    resource: "@AcmeUrlshortenerBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,8 @@
+#parameters:
+#    urlshortener_chars: abcdefghj234kmnpqKMNPQRSTUVWXYZrstuvwxyz56789ABCDEFGHJ
+
+services:
+    urlshortener.service:
+        class: Acme\UrlshortenerBundle\Service\UrlshortenerService
+        arguments:
+            - %urlshortener_chars%
